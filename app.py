@@ -1,3 +1,4 @@
+import os
 import bcrypt
 from flask import Flask, jsonify, request
 from models import create_tables, create_user, get_user_by_username
@@ -133,4 +134,5 @@ def delete_task_route(task_id):
 
 
 if __name__ == "__main__":
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
